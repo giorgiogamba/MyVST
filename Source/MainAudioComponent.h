@@ -28,5 +28,24 @@ public:
     virtual void releaseResources() override;
 
 private:
+    
+    // Wavetable representing a sine function
+    Array<float> SineWavetable;
+    
+    // Size of the sine wavetable
+    float SineWavetableSize;
+    
+    // Frequency of the sine of the wavetable
+    double frequency;
+    
+    // Current phase of the size
+    double phase;
+    
+    // How much we have to increment the current wavetable value compared with the frequency
+    double increment = 0;
+    
+    // Amplitude applied to the wave
+    double amplitude;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainAudioComponent)
 };
