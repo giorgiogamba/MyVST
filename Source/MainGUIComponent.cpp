@@ -6,8 +6,30 @@ MainGUIComponent::MainGUIComponent()
 {
     setSize (800, 1000);
     
+    // Frequency Slider setup
+    frequencySlider.setSliderStyle(Slider::SliderStyle::LinearHorizontal);
+    frequencySlider.setTextValueSuffix("Hz");
+    frequencySlider.setBounds(getLocalBounds());
+    frequencySlider.setRange(50, 1000); // Available frequencies
+    frequencySlider.addListener(this);
+    
+    frequencyLabel.setText("Frequency", dontSendNotification);
+    frequencyLabel.attachToComponent(&frequencySlider, true);
+    
+    addAndMakeVisible(frequencySlider);
+
+    // Amplitude Slider setup
+    amplitudeSlider.setSliderStyle(Slider::SliderStyle::LinearHorizontal);
+    amplitudeSlider.setBounds(getLocalBounds());
+    amplitudeSlider.setRange(0, 1); // Available
+    amplitudeSlider.addListener(this);
+    addAndMakeVisible(amplitudeSlider);
+    
+    amplitudeLabel.setText("Amplitude", dontSendNotification);
+    amplitudeLabel.attachToComponent(&amplitudeSlider, true);
+    
     // Creates audio component
-    addChildComponent(new MainAudioComponent());
+    addChildComponent(audioComponent);
 }
 
 MainGUIComponent::~MainGUIComponent()
@@ -27,7 +49,22 @@ void MainGUIComponent::paint (juce::Graphics& g)
 
 void MainGUIComponent::resized()
 {
-    // This is called when the MainComponent is resized.
-    // If you add any child components, this is where you should
-    // update their positions.
+    const int LabelSpace = 100;
+    frequencySlider.setBounds(LabelSpace, 20, getWidth() - 100, 20);
+    amplitudeSlider.setBounds(LabelSpace, 50, getWidth() - 100, 50);
+}
+
+void MainGUIComponent::sliderValueChanged(Slider* slider)
+{
+    if (!slider)
+        return;
+    
+    if (slider == &frequencySlider)
+    {
+        audioComponent.SetFrequency(slider->getValue());
+    }
+    else if (slider == &amplitudeSlider)
+    {
+        audioComponent.SetAmplitude(slider->getValue());
+    }
 }

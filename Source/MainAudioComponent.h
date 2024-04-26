@@ -26,6 +26,10 @@ public:
     virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
     
     virtual void releaseResources() override;
+    
+    void SetFrequency(const double newFrequency);
+    
+    void SetAmplitude(const double newAmplitude);
 
 private:
     
@@ -46,6 +50,8 @@ private:
     
     // Amplitude applied to the wave
     double amplitude;
+    
+    double currentSampleRate;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainAudioComponent)
 };
