@@ -29,9 +29,11 @@ void MainAudioComponent::prepareToPlay (int samplesPerBlock, double sampleRate)
     frequency = 440;
     phase = 0;
     SineWavetableSize = 1024;
-    amplitude = 0.5;
+    amplitude = 0;
     
     increment = frequency * SineWavetableSize / sampleRate;
+    
+    currentSampleRate = sampleRate;
     
     // Fill up wavetable with one cycle of sine wave
     for (int i = 0; i < SineWavetableSize; i ++)
@@ -78,4 +80,17 @@ void MainAudioComponent::getNextAudioBlock(const juce::AudioSourceChannelInfo& b
 
 void MainAudioComponent::releaseResources()
 {
+    SineWavetable.clear();
+}
+
+void MainAudioComponent::SetFrequency(const double newFrequency)
+{
+    frequency = newFrequency;
+    increment = frequency * SineWavetableSize / currentSampleRate;
+    phase = fmod(phase + increment, SineWavetableSize);
+}
+
+void MainAudioComponent::SetAmplitude(const double newAmplitude)
+{
+    amplitude = newAmplitude;
 }
