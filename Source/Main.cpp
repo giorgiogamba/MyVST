@@ -7,7 +7,8 @@
 */
 
 #include <JuceHeader.h>
-#include "MainComponent.h"
+#include "MainGUIComponent.h"
+#include "MainAudioComponent.h"
 
 //==============================================================================
 class MyVSTApplication  : public juce::JUCEApplication
@@ -65,7 +66,9 @@ public:
                               DocumentWindow::allButtons)
         {
             setUsingNativeTitleBar (true);
-            setContentOwned (new MainComponent(), true);
+            
+            // Creates the root component
+            setContentOwned (new MainGUIComponent(), true);
 
            #if JUCE_IOS || JUCE_ANDROID
             setFullScreen (true);
