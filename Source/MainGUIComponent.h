@@ -10,18 +10,13 @@
 class MainGUIComponent  : public juce::Component
 {
 public:
-    //==============================================================================
+    
     MainGUIComponent();
     ~MainGUIComponent() override;
 
-    //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
 
 private:
-    //==============================================================================
-    // Your private member variables go here...
-
-
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainGUIComponent)
 };
