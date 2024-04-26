@@ -33,4 +33,5 @@
 
 # JUCE
 JuceLibraryCode
-JuceHeader.h
+.DS_STORE
+Builds
