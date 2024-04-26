@@ -4,7 +4,7 @@
 //==============================================================================
 MainGUIComponent::MainGUIComponent()
 {
-    setSize (600, 400);
+    setSize (800, 1000);
     
     // Creates audio component
     addChildComponent(new MainAudioComponent());
