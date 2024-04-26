@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# JUCE
+JuceLibraryCode
+JuceHeader.h
