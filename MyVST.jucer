@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="HDOm2r" name="MyVST" projectType="guiapp" displaySplashScreen="1"
+<JUCERPROJECT id="HDOm2r" name="MyVST" projectType="audioplug" displaySplashScreen="1"
               jucerFormatVersion="1" companyEmail="giorgiogamba97@gmail.com">
   <MAINGROUP id="y0eSV2" name="MyVST">
     <GROUP id="{00F1E7B4-297D-A4A1-7043-243924F2116E}" name="Source">
