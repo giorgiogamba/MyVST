@@ -35,3 +35,7 @@
 JuceLibraryCode
 .DS_STORE
 Builds
+Builds/MacOSX/.DS_Store
+Builds/MacOSX/Info-App.plist
+Builds/MacOSX/MyVST.xcodeproj/project.pbxproj
+MyVST.jucer
