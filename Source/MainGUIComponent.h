@@ -24,7 +24,7 @@ private:
     MainAudioComponent audioComponent;
     
     // This function response to every slider action
-    void sliderValueChanged(Slider* slider);
+    void sliderValueChanged(Slider* slider) override;
     
     Slider frequencySlider;
     Label frequencyLabel;
