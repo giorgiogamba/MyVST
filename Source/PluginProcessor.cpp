@@ -22,6 +22,18 @@ MyVSTAudioProcessor::MyVSTAudioProcessor()
                        )
 #endif
 {
+    
+    synth.clearVoices();
+    
+    // Assuming a 5-voices synth
+    for (int i = 0; i < 5; ++i)
+    {
+        synth.addVoice(new MySynthesiserVoice());
+    }
+    
+    synth.clearSounds();
+    synth.addSound(new MySynthesiserSound());
+    
 }
 
 MyVSTAudioProcessor::~MyVSTAudioProcessor()
@@ -93,8 +105,12 @@ void MyVSTAudioProcessor::changeProgramName (int index, const juce::String& newN
 //==============================================================================
 void MyVSTAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+    // Ignores sample from last key pressed
+    ignoreUnused(samplesPerBlock);
+    
+    // In case of sample rate change, avoids crashing
+    lastSampleRate = sampleRate;
+    synth.setCurrentPlaybackSampleRate(lastSampleRate);
 }
 
 void MyVSTAudioProcessor::releaseResources()
@@ -154,8 +170,11 @@ void MyVSTAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::
     {
         auto* channelData = buffer.getWritePointer (channel);
 
-        // ..do something to the data...
+        // ..do something to the data... 
     }
+    
+    buffer.clear();
+    synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 }
 
 //==============================================================================

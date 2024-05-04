@@ -10,6 +10,9 @@
 
 #include <JuceHeader.h>
 
+#include "MySynthesiserSound.h"
+#include "MySynthesiserVoice.h"
+
 //==============================================================================
 /**
 */
@@ -54,6 +57,12 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
 
 private:
+    
+    Synthesiser synth;
+    MySynthesiserVoice* myVoice;
+    
+    double lastSampleRate;
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyVSTAudioProcessor)
 };
