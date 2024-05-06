@@ -21,7 +21,7 @@ public:
     MySynthesiserVoice()
     {
         frequency = 0.0;
-        amplitude = 0.f;
+        keyVelocity = 0.f;
         
         oscillator = new Oscillator();
     }
@@ -43,7 +43,9 @@ public:
 private:
     
     double frequency;
-    float amplitude;
+    
+    // Value that assigns an amplitude to a pressed key, in order to mute it if key unpressed
+    float keyVelocity;
     
     Oscillator* oscillator;
     

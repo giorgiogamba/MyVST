@@ -18,6 +18,7 @@ bool MySynthesiserVoice::canPlaySound(SynthesiserSound* sound)
 
 void MySynthesiserVoice::startNote(int midiNodeNumber, float velocity, SynthesiserSound* sound, int currentPitchWheelPosition)
 {
+    keyVelocity = 0.5f;
     frequency = MidiMessage::getMidiNoteInHertz(midiNodeNumber);
     
     oscillator->setFrequency(frequency, getSampleRate());
@@ -25,6 +26,8 @@ void MySynthesiserVoice::startNote(int midiNodeNumber, float velocity, Synthesis
 
 void MySynthesiserVoice::stopNote(float velocity, bool allowTailOff)
 {
+    keyVelocity = 0.f;
+    
     clearCurrentNote();
 }
 
@@ -37,7 +40,7 @@ void MySynthesiserVoice::renderNextBlock(AudioBuffer<float> &outputBuffer, int s
     {
         for (int channel = 0; channel < outputBuffer.getNumChannels(); ++channel)
         {
-            outputBuffer.addSample(channel, startSample, oscillator->getNextSample());
+            outputBuffer.addSample(channel, startSample, oscillator->getNextSample() * keyVelocity);
         }
         
         ++startSample;
