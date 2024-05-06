@@ -43,7 +43,6 @@ public:
 private:
     
     double frequency;
-    
     float amplitude;
     
     Oscillator* oscillator;
