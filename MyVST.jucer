@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< Updated upstream
 <JUCERPROJECT id="HDOm2r" name="MyVST" projectType="audioplug" displaySplashScreen="1"
               jucerFormatVersion="1" companyEmail="giorgiogamba97@gmail.com">
   <MAINGROUP id="y0eSV2" name="MyVST">
@@ -13,6 +14,31 @@
             file="Source/MainGUIComponent.h"/>
       <FILE id="fsWYQr" name="MainGUIComponent.cpp" compile="1" resource="0"
             file="Source/MainGUIComponent.cpp"/>
+=======
+<JUCERPROJECT id="PpQKEU" name="MyVST" projectType="audioplug" displaySplashScreen="1"
+              jucerFormatVersion="1" companyEmail="giorgiogamba97@gmail.com"
+              pluginFormats="buildVST3" pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn"
+              headerPath="/Users/giorgiogamba/Documents/MyVST/ExternalLibraries">
+  <MAINGROUP id="K8GcX7" name="MyVST">
+    <GROUP id="{7EE68610-8DD6-BAA8-0361-8F7BF4BCE7EC}" name="Source">
+      <FILE id="v6atgx" name="Oscillator.cpp" compile="1" resource="0" file="Source/Oscillator.cpp"/>
+      <FILE id="I5hdKh" name="Oscillator.h" compile="0" resource="0" file="Source/Oscillator.h"/>
+      <FILE id="WBROQR" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="R9YjuR" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="EXGr9M" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="MeRvBu" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="jxB0Fg" name="MySynthesiserSound.cpp" compile="1" resource="0"
+            file="Source/MySynthesiserSound.cpp"/>
+      <FILE id="Pgatgn" name="MySynthesiserSound.h" compile="0" resource="0"
+            file="Source/MySynthesiserSound.h"/>
+      <FILE id="Dth3Oq" name="MySynthesiserVoice.cpp" compile="1" resource="0"
+            file="Source/MySynthesiserVoice.cpp"/>
+      <FILE id="ozwMHV" name="MySynthesiserVoice.h" compile="0" resource="0"
+            file="Source/MySynthesiserVoice.h"/>
+>>>>>>> Stashed changes
     </GROUP>
   </MAINGROUP>
   <MODULES>
