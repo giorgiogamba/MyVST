@@ -6,6 +6,9 @@
               headerPath="/Users/giorgiogamba/Documents/MyVST/ExternalLibraries">
   <MAINGROUP id="K8GcX7" name="MyVST">
     <GROUP id="{7EE68610-8DD6-BAA8-0361-8F7BF4BCE7EC}" name="Source">
+      <FILE id="ntzHiC" name="ADSREnvelope.cpp" compile="1" resource="0"
+            file="Source/ADSREnvelope.cpp"/>
+      <FILE id="vsw0Zx" name="ADSREnvelope.h" compile="0" resource="0" file="Source/ADSREnvelope.h"/>
       <FILE id="v6atgx" name="Oscillator.cpp" compile="1" resource="0" file="Source/Oscillator.cpp"/>
       <FILE id="I5hdKh" name="Oscillator.h" compile="0" resource="0" file="Source/Oscillator.h"/>
       <FILE id="WBROQR" name="PluginProcessor.cpp" compile="1" resource="0"
