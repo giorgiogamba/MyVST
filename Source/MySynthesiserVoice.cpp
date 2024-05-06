@@ -21,6 +21,8 @@ void MySynthesiserVoice::startNote(int midiNodeNumber, float velocity, Synthesis
     keyVelocity = 0.5f;
     frequency = MidiMessage::getMidiNoteInHertz(midiNodeNumber);
     
+    adsr->noteOn();
+    
     oscillator->setFrequency(frequency, getSampleRate());
 }
 
@@ -28,19 +30,23 @@ void MySynthesiserVoice::stopNote(float velocity, bool allowTailOff)
 {
     keyVelocity = 0.f;
     
+    adsr->noteOff();
+    
     clearCurrentNote();
 }
 
 void MySynthesiserVoice::renderNextBlock(AudioBuffer<float> &outputBuffer, int startSample, int numSamples)
 {
-    if (!oscillator)
+    if (!oscillator || !adsr)
      return;
+    
+    const float oldStartSample = startSample;
     
     for (int sample = 0; sample < numSamples; ++sample)
     {
         for (int channel = 0; channel < outputBuffer.getNumChannels(); ++channel)
         {
-            outputBuffer.addSample(channel, startSample, oscillator->getNextSample() * keyVelocity);
+            outputBuffer.addSample(channel, startSample, oscillator->getNextSample() * keyVelocity * adsr->getNextSample());
         }
         
         ++startSample;

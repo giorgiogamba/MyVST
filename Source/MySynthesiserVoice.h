@@ -13,6 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MySynthesiserSound.h"
 #include "Oscillator.h"
+#include "ADSREnvelope.h"
 
 class MySynthesiserVoice : public SynthesiserVoice
 {
@@ -24,6 +25,7 @@ public:
         keyVelocity = 0.f;
         
         oscillator = new Oscillator();
+        adsr = new ADSREnvelope(getSampleRate(), 10.f, 1.f, 1.f, 1.f, 0.5f);
     }
     
     bool canPlaySound(SynthesiserSound* sound);
@@ -48,5 +50,5 @@ private:
     float keyVelocity;
     
     Oscillator* oscillator;
-    
+    ADSREnvelope* adsr;
 };
