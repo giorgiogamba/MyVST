@@ -75,119 +75,26 @@ public:
     }
     
     /** Starts the ADSR envelope*/
-    void noteOn()
-    {
-        status = ADSRStatus::Attack;
-    }
+    void noteOn();
     
     /** Ends the ADSR envelope*/
-    void noteOff()
-    {
-        reset();
-    }
+    void noteOff();
     
-    void goToNextStatus()
-    {
-        switch (status) {
-            case ADSRStatus::Attack:
-                status = ADSRStatus::Decay;
-                break;
-                
-            case ADSRStatus::Decay:
-                status = ADSRStatus::Sustain;
-                break;
-                
-            case ADSRStatus::Sustain:
-                status = ADSRStatus::Release;
-                break;
-                
-            case ADSRStatus::Release:
-                status = ADSRStatus::NONE;
-                break;
-                
-            default:
-                status = ADSRStatus::NONE;
-                break;
-        }
-    }
+    /** Goes to the next envelope status */
+    void goToNextStatus();
     
     void setSampleRate(const float inSampleRate) { sampleRate = inSampleRate; }
     
-    void applyToBuffer(AudioBuffer<float>& buffer, int startSample, int numSamples)
-    {
-        for (int sample = 0; sample < numSamples; ++sample)
-        {
-            for (int channel = 0; channel < buffer.getNumChannels(); ++channel)
-            {
-                buffer.getWritePointer(channel)[startSample] *= getNextSample();
-            }
-            
-            ++startSample;
-        }
-    }
-    
     /** Computes the different amount of gain to assign to the buffer in each step of the envelope based on times */
-    float computeRate(const float amount, const float time) const
-    {
-        return amount / (time * sampleRate);
-    }
+    float computeRate(const float amount, const float time) const;
     
-    void updateRates()
-    {
-        attackRate = computeRate(1.f, attackTime);
-        decayRate = computeRate(1.f - sustainAmount, decayTime);
-        releaseRate = computeRate(sustainTime, releaseTime);
-    }
+    /** Computes the envelope phases' rates based on configuration values */
+    void updateRates();
     
     /** Returns the next value of the envelope based on status*/
-    float getNextSample()
-    {
-        if (status == ADSRStatus::Attack)
-        {
-            value += attackRate;
-            if (value >= 1.f) // Attack path completed
-            {
-                value = 1.f;
-                goToNextStatus();
-            }
-        }
-        else if (status == ADSRStatus::Decay)
-        {
-            value -= decayRate;
-            if (value <= sustainAmount)
-            {
-                value = sustainAmount;
-                goToNextStatus();
-            }
-        }
-        else if (status == Sustain)
-        {
-            value = sustainAmount;
-            sustainCount ++;
-            if (sustainCount == sustainTime * sampleRate)
-            {
-                goToNextStatus();
-            }
-        }
-        else if (status == ADSRStatus::Release)
-        {
-            value -= releaseRate;
-            if (value <= 0.f)
-            {
-                value = 0.f;
-                goToNextStatus();
-            }
-        }
-        
-        return value;
-    }
+    float getNextSample();
     
-    void reset()
-    {
-        value = 0.f;
-        sustainCount = 0;
-        status = ADSRStatus::NONE;
-    }
+    void reset();
     
 private:
     
