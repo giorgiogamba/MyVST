@@ -96,6 +96,18 @@ public:
     
     void reset();
     
+    void setAttackTime(const float inValue) { attackTime = inValue; }
+    float getAttackTime() const { return attackTime; }
+    
+    void setDecayTime(const float inDecay) { decayTime = inDecay; }
+    float getDecayTime() const { return decayTime; }
+    
+    void setSustainTime(const float inSustain) { sustainTime = inSustain; }
+    float getSustainTime() const { return sustainTime; }
+    
+    void setReleaseTime(const float inRelease) { releaseTime = inRelease; }
+    float getReleaseTime() const { return sustainTime; }
+    
 private:
     
     float sampleRate;
