@@ -17,7 +17,7 @@ MyVSTAudioProcessorEditor::MyVSTAudioProcessorEditor (MyVSTAudioProcessor& p)
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     
-    adsrController = new ADSREnvelopeGUI();
+    adsrController = new ADSREnvelopeGUI(p.getADSREnvelope());
     
     setSize (400, 300);
 }

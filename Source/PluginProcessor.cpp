@@ -23,17 +23,18 @@ MyVSTAudioProcessor::MyVSTAudioProcessor()
 #endif
 {
     
+    adsrEnvelope = new ADSREnvelope(getSampleRate(), 10.f, 1.f, 1.f, 1.f, 0.5f);
+    
     synth.clearVoices();
     
     // Assuming a 5-voices synth
     for (int i = 0; i < 5; ++i)
     {
-        synth.addVoice(new MySynthesiserVoice());
+        synth.addVoice(new MySynthesiserVoice(adsrEnvelope));
     }
     
     synth.clearSounds();
     synth.addSound(new MySynthesiserSound());
-    
 }
 
 MyVSTAudioProcessor::~MyVSTAudioProcessor()
@@ -105,6 +106,8 @@ void MyVSTAudioProcessor::changeProgramName (int index, const juce::String& newN
 //==============================================================================
 void MyVSTAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
+    adsrEnvelope->setSampleRate(sampleRate);
+    
     // Ignores sample from last key pressed
     ignoreUnused(samplesPerBlock);
     

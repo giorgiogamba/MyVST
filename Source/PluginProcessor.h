@@ -13,6 +13,8 @@
 #include "MySynthesiserSound.h"
 #include "MySynthesiserVoice.h"
 
+class ADSREnvelope;
+
 //==============================================================================
 /**
 */
@@ -55,11 +57,15 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    
+    ADSREnvelope* getADSREnvelope() const { return adsrEnvelope; }
 
 private:
     
     Synthesiser synth;
     MySynthesiserVoice* myVoice;
+    
+    ADSREnvelope* adsrEnvelope;
     
     double lastSampleRate;
     

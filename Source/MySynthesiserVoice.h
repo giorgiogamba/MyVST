@@ -15,17 +15,19 @@
 #include "Oscillator.h"
 #include "ADSREnvelope.h"
 
+class ADSRController;
+
 class MySynthesiserVoice : public SynthesiserVoice
 {
 public:
     
-    MySynthesiserVoice()
+    MySynthesiserVoice(ADSREnvelope* adsrEnvelope)
     {
         frequency = 0.0;
         keyVelocity = 0.f;
         
         oscillator = new Oscillator();
-        adsr = new ADSREnvelope(getSampleRate(), 10.f, 1.f, 1.f, 1.f, 0.5f);
+        adsr = adsrEnvelope;
     }
     
     bool canPlaySound(SynthesiserSound* sound);
@@ -35,6 +37,8 @@ public:
     void stopNote(float velocity, bool allowTailOff);
     
     void renderNextBlock(AudioBuffer<float> &outputBuffer, int startSample, int numSamples);
+    
+    ADSREnvelope* getADSREnvelope() const { return adsr; }
     
     virtual void pitchWheelMoved (int newPitchWheelValue)
     {}

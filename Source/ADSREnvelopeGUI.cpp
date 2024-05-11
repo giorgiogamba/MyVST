@@ -10,8 +10,10 @@
 
 #include "ADSREnvelopeGUI.h"
 
-ADSREnvelopeGUI::ADSREnvelopeGUI()
+ADSREnvelopeGUI::ADSREnvelopeGUI(ADSREnvelope* adsrEnvelope)
 {
+    adsr = adsrEnvelope;
+    
     attackSlider = new Slider();
     
     

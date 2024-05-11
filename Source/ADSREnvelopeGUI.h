@@ -21,7 +21,7 @@ class ADSREnvelopeGUI : public Component, public Slider::Listener
 
 public:
     
-    ADSREnvelopeGUI();
+    ADSREnvelopeGUI(ADSREnvelope* adsrEnvelope);
     
     virtual void sliderValueChanged(Slider* slider) override;
     
