@@ -57,7 +57,7 @@ void ADSREnvelope::updateRates()
 {
     attackRate = computeRate(1.f, attackTime);
     decayRate = computeRate(1.f - sustainAmount, decayTime);
-    releaseRate = computeRate(sustainTime, releaseTime);
+    releaseRate = computeRate(sustainAmount, releaseTime);
 }
 
 /** Returns the next value of the envelope based on status*/
