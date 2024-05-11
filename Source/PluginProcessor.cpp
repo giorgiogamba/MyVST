@@ -23,7 +23,7 @@ MyVSTAudioProcessor::MyVSTAudioProcessor()
 #endif
 {
     
-    adsrEnvelope = new ADSREnvelope(getSampleRate(), 10.f, 1.f, 1.f, 1.f, 0.5f);
+    adsrEnvelope = new ADSREnvelope(getSampleRate(), 0.f, 1.f, 1.f, 1.f, 0.5f);
     
     synth.clearVoices();
     
