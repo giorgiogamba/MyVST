@@ -37,10 +37,8 @@ void MySynthesiserVoice::stopNote(float velocity, bool allowTailOff)
 
 void MySynthesiserVoice::renderNextBlock(AudioBuffer<float> &outputBuffer, int startSample, int numSamples)
 {
-    if (!oscillator || !adsr)
-     return;
-    
-    const float oldStartSample = startSample;
+    if (!oscillator || !adsr)
+        return;
     
     for (int sample = 0; sample < numSamples; ++sample)
     {
