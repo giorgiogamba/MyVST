@@ -96,16 +96,16 @@ public:
     
     void reset();
     
-    void setAttackTime(const float inValue) { attackTime = inValue; }
+    void setAttackTime(const float inValue);
     float getAttackTime() const { return attackTime; }
     
-    void setDecayTime(const float inDecay) { decayTime = inDecay; }
+    void setDecayTime(const float inDecay);
     float getDecayTime() const { return decayTime; }
     
-    void setSustainTime(const float inSustain) { sustainTime = inSustain; }
+    void setSustainTime(const float inSustain);
     float getSustainTime() const { return sustainTime; }
     
-    void setReleaseTime(const float inRelease) { releaseTime = inRelease; }
+    void setReleaseTime(const float inRelease);
     float getReleaseTime() const { return sustainTime; }
     
 private:

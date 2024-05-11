@@ -109,3 +109,27 @@ void ADSREnvelope::reset()
     sustainCount = 0;
     status = ADSRStatus::NONE;
 }
+
+void ADSREnvelope::setAttackTime(const float inValue)
+{
+    attackTime = inValue;
+    updateRates();
+}
+
+void ADSREnvelope::setDecayTime(const float inDecay)
+{
+    decayTime = inDecay;
+    updateRates();
+}
+
+void ADSREnvelope::setSustainTime(const float inSustain)
+{
+    sustainTime = inSustain;
+    updateRates();
+}
+
+void ADSREnvelope::setReleaseTime(const float inRelease)
+{
+    releaseTime = inRelease;
+    updateRates();
+}
