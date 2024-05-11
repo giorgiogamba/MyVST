@@ -33,6 +33,8 @@ private:
     
     void setupSlidersStyle();
     
+    void createSlider(Slider* slider);
+    
     // Defines a slider for each envelope parameter
     Slider* attackSlider;
     Slider* decaySlider;

@@ -15,16 +15,9 @@ ADSREnvelopeGUI::ADSREnvelopeGUI(ADSREnvelope* adsrEnvelope)
     adsr = adsrEnvelope;
     
     attackSlider = new Slider();
-    
-    
     decaySlider = new Slider();
-    addAndMakeVisible(decaySlider);
-    
     sustainSlider = new Slider();
-    addAndMakeVisible(sustainSlider);
-    
     releaseSlider = new Slider();
-    addAndMakeVisible(releaseSlider);
     
     setupSlidersStyle();
     
@@ -66,20 +59,27 @@ void ADSREnvelopeGUI::resized()
 {
     attackSlider->setBounds(10, 10, 30, 60);
     decaySlider->setBounds(50, 10, 30, 60);
+    sustainSlider->setBounds(90, 10, 30, 60);
+    releaseSlider->setBounds(130, 10, 30, 60);
 }
 
 void ADSREnvelopeGUI::setupSlidersStyle()
 {
-    attackSlider->setSliderStyle(Slider::SliderStyle::LinearVertical);
-    attackSlider->setRange(0.1f, 1.f);
-    attackSlider->setValue(0.1f);
-    attackSlider->setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
-    attackSlider->addListener(this);
-    addAndMakeVisible(attackSlider);
+    createSlider(attackSlider);
+    createSlider(decaySlider);
+    createSlider(sustainSlider);
+    createSlider(releaseSlider);
+}
+
+void ADSREnvelopeGUI::createSlider(Slider* slider)
+{
+    if (!slider)
+        return;
     
-    decaySlider->setSliderStyle(Slider::SliderStyle::LinearVertical);
-    decaySlider->setRange(0.1f, 1.f);
-    decaySlider->setValue(0.1f);
-    decaySlider->setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
-    decaySlider->addListener(this);
+    slider->setSliderStyle(Slider::SliderStyle::LinearVertical);
+    slider->setRange(0.1f, 1.f);
+    slider->setValue(0.1f);
+    slider->setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
+    slider->addListener(this);
+    addAndMakeVisible(slider);
 }
