@@ -6,6 +6,10 @@
               headerPath="/Users/giorgiogamba/Documents/MyVST/ExternalLibraries">
   <MAINGROUP id="K8GcX7" name="MyVST">
     <GROUP id="{7EE68610-8DD6-BAA8-0361-8F7BF4BCE7EC}" name="Source">
+      <FILE id="WA83R6" name="ADSREnvelopeGUI.cpp" compile="1" resource="0"
+            file="Source/ADSREnvelopeGUI.cpp"/>
+      <FILE id="mj8ahy" name="ADSREnvelopeGUI.h" compile="0" resource="0"
+            file="Source/ADSREnvelopeGUI.h"/>
       <FILE id="ntzHiC" name="ADSREnvelope.cpp" compile="1" resource="0"
             file="Source/ADSREnvelope.cpp"/>
       <FILE id="vsw0Zx" name="ADSREnvelope.h" compile="0" resource="0" file="Source/ADSREnvelope.h"/>
